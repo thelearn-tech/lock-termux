@@ -1,0 +1,35 @@
+#!/bin/bash
+# by thelearn-tech
+# https://github.com/thelearn-tech
+# https://github.com/thelearn-tech/lock-termux
+
+passwd=$(cat  /data/data/com.termux/files/usr/share/lock_termux)
+
+
+main_loop() {
+
+  main
+
+}
+
+main() {
+
+echo -e "\e[0m"
+read -p "Password:- " upass
+
+if [[ $upass  == $passwd ]]
+  then
+  sleep 0.7
+  exit 1
+else
+  echo ""
+  echo -e "\e[1;31mWrong Password"
+  echo ""
+  sleep 1
+  clear
+  main_loop
+fi
+} 
+ 
+
+main
